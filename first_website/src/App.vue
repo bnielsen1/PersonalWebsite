@@ -3,6 +3,7 @@ import ProjectCard from './ProjectCard.vue'
 import Diploma from './Diploma.vue'
 import ExperienceCard from './ExperienceCard.vue'
 import Contact from './Contact.vue'
+import { MotionDirective as motion } from '@vueuse/motion'
 
 export default {
   components: {
@@ -33,17 +34,19 @@ export default {
 </script>
 
 <template>
-    <div class="title_box">
-        <div class="top_bar">
-            <div class="home_button">
-                &lt;brian nielsen&gt;
-            </div>
-            <div class="shortcuts">
-                projects   |   fun   |   contact
-            </div>
+    <div class="top_bar">
+        <div class="home_button">
+            <a href="#top">&lt;brian nielsen&gt;</a>
         </div>
+        <div class="shortcuts">
+            <a href="#projects">projects</a> |
+            <a href="#experience">experience</a> |
+            <a href="#contact">contact</a>
+        </div>
+    </div>
+    <div class="title_box"> 
 
-        <div class="center_box">
+        <div id="top" class="center_box">
             <div class="hey_text">
                 Hey, I'm Brian!
             </div>
@@ -84,7 +87,7 @@ export default {
         </div>
     </div>
     <div class="middle_box">
-        <div class="subheading_text">
+        <div id="projects" class="subheading_text">
             My Projects
         </div>
         <div class="project_box">
@@ -92,7 +95,7 @@ export default {
         </div>
     </div>
     <div class="last_box">
-        <div class="subheading_text">
+        <div id="experience" class="subheading_text">
             Experience
         </div>
         <div class="experience_box">
@@ -101,7 +104,7 @@ export default {
         </div>
     </div> 
     <div class="form_box">
-      <div class="subheading_text">
+      <div id="contact" class="subheading_text">
         Contact me
       </div>
       <Contact />
@@ -113,6 +116,7 @@ html, body {
   font-family: 'Courier New', monospace;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -167,8 +171,9 @@ a {
 }
 
 .home_button {
-  font-size: 4vh;
+  font-size: 50px;
   background: linear-gradient(to right, darkgreen, darkolivegreen, darkseagreen);
+  margin-top: 4px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -224,7 +229,11 @@ a {
 }
 
 .shortcuts {
-  font-size: 2vh;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  font-size: 20px;
 }
 
 .face_pic {
@@ -267,15 +276,15 @@ a {
 }
 
 .top_bar {
+  position: fixed;
   width: 96vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding-top: 1vw;
-  padding-left: 3vw;
-  padding-right: 3vw;
-  padding-right: 1vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  box-shadow: 0 2px 2px #eee;
 }
 
 .center_box {
