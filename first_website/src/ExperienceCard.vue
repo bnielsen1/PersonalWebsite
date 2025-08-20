@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-    <div class="experience_card" :style="resolveColor">
+    <div v-motion-pop-visible-once class="experience_card" :style="resolveColor">
       <div class="card_space">
         <div>
           <div class="title_section">

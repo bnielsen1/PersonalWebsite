@@ -45,7 +45,7 @@ export default {
 </script>
 
 <template>
-    <div class="project_card" :style="resolveColor">
+    <div class="project_card" v-motion-pop-visible-once :style="resolveColor">
       <div class="card_space">
         <div>
           <div class="title_section">

@@ -3,7 +3,6 @@ import ProjectCard from './ProjectCard.vue'
 import Diploma from './Diploma.vue'
 import ExperienceCard from './ExperienceCard.vue'
 import Contact from './Contact.vue'
-import { MotionDirective as motion } from '@vueuse/motion'
 
 export default {
   components: {
@@ -28,6 +27,12 @@ export default {
     
       const experienceResponse = await fetch('http://localhost:3000/experiences');
       this.experiences = await experienceResponse.json();
+    },
+    scrollTo(section) {
+      const element = document.getElementById(section)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      } 
     }
   }
 }
@@ -36,26 +41,43 @@ export default {
 <template>
     <div class="top_bar">
         <div class="home_button">
-            <a href="#top">&lt;brian nielsen&gt;</a>
+            <a @click.prevent="scrollTo('top')" style="cursor:pointer">&lt;brian nielsen&gt;</a>
         </div>
         <div class="shortcuts">
-            <a href="#projects">projects</a> |
-            <a href="#experience">experience</a> |
-            <a href="#contact">contact</a>
+            <a @click.prevent="scrollTo('projects')" style="cursor:pointer">projects</a> |
+            <a @click.prevent="scrollTo('experience')" style="cursor:pointer">experience</a> |
+            <a @click.prevent="scrollTo('contact')" style="cursor:pointer">contact</a>
         </div>
     </div>
     <div class="title_box"> 
 
         <div id="top" class="center_box">
-            <div class="hey_text">
+            <div class="hey_text" 
+              v-motion
+              :initial="{ opacity: 0, y: -50 }"
+              :enter="{ opacity: 1, y: 0 }"
+              :duration="1000"
+            >
                 Hey, I'm Brian!
             </div>
             <div class="face_desc">
-                <div class="face_picture">
+                <div class="face_picture"
+                  v-motion
+                  :initial="{ opacity: 0, x: -50 }"
+                  :enter="{ opacity: 1, x: 0}"
+                  :delay="800"
+                  :duration="1000"
+                >
                     <img src="/professional_pic.jpg" alt="my face lol" class="face_pic"/>
                 </div>
-                <div class="face_text">
-                    <p class="reading_text">
+                <div class="face_text"> 
+                    <p class="reading_text"
+                      v-motion
+                      :initial="{ opacity: 0, x: 50 }"
+                      :enter="{ opacity: 1, x: 0 }"
+                      :delay="800"
+                      :duration="1000"
+                    >
                     With interests in video games, audio, and electronics, Computer Science was an easy 
                     choice for me coming out of highschool. Now, with degree in hand, things haven't 
                     changed a bit. I can't help myself from dipping my toes in a little bit of everything 
@@ -122,6 +144,10 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+#projects, #experience, #contact {
+  scroll-margin-top: 80px;
 }
 
 .subheading_text {
@@ -285,6 +311,7 @@ a {
   padding-left: 2vw;
   padding-right: 2vw;
   box-shadow: 0 2px 2px #eee;
+  z-index: 9999;
 }
 
 .center_box {

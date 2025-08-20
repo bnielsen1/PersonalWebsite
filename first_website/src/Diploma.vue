@@ -6,7 +6,7 @@
 
 
 <template>
-  <div class="diploma_box">
+  <div v-motion-pop-visible-once class="diploma_box">
     <div class="title_font">
         <img src="/UF_LOGO.png" :style="{ height: '50px' }">
       <img :style="{ height: '50px', width: '50px' }" src="/UF_SEAL.png"/>
