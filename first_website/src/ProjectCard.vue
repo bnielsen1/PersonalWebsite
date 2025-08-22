@@ -30,11 +30,10 @@ export default {
       },
       resolveColor() {
           return {
-            fontFamily: "'Brush Script MT', cursive",
+            fontFamily: "'Times New Roman', serif",
             display: 'flex',
             flexDirection: 'column',
             height: '340px',
-            width: '500px',
             backgroundImage: 'linear-gradient(to bottom right, ' + this.colors[0] + ', ' + this.colors[1] + ')',
             padding: '20px',
             margin: '20px'
@@ -88,6 +87,13 @@ export default {
 .project_card {
   box-shadow: 8px 8px 3px #444444;
   transition: 0.4s ease;
+  width: 500px;
+}
+
+@media (max-width: 1200px) and (min-width: 950px) {
+  .project_card {
+    width: 400px;
+  }
 }
 
 .project_card:hover {

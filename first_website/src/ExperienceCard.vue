@@ -26,7 +26,7 @@ export default {
       },
       resolveColor() {
           return {
-            fontFamily: "'Brush Script MT', cursive",
+            fontFamily: "'Times New Roman', serif",
             display: 'flex',
             flexDirection: 'column',
             height: '300px',
