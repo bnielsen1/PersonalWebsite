@@ -29,9 +29,7 @@ export default {
             fontFamily: "'Times New Roman', serif",
             display: 'flex',
             flexDirection: 'column',
-            height: '300px',
             breakInside: 'avoid',
-            width: '400px',
             marginBottom: '20px',
             backgroundImage: 'linear-gradient(to bottom right, ' + this.colors[0] + ', ' + this.colors[1] + ')',
             padding: '20px',
@@ -77,6 +75,18 @@ export default {
 .experience_card {
   box-shadow: 8px 8px 3px #444444;
   transition: 0.4s ease;
+  width: 400px;
+}
+
+@media (max-width: 500px) {
+  .experience_card {
+    width: 80vw;
+    font-size: 14px;
+  }
+
+  .title_text {
+    font-size: 22px;
+  }
 }
 
 .experience_card:hover {

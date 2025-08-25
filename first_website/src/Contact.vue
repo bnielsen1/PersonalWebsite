@@ -62,6 +62,7 @@
 
 <style>
 
+
 input {
   font-family: Georgia, serif;
   font-size: 23px;
@@ -138,6 +139,35 @@ button:hover {
   height: 50px;
   width: 600px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 500px) {
+  .contact_box {
+    width: 90vw;
+    padding: 5px;
+  }
+
+  input {
+    width: 80vw;
+    font-size: 16px;
+  }
+
+  textarea {
+    width: 80vw;
+    font-size: 16px;
+  }
+
+  .input_chunk {
+    width: 80vw;
+  }
+
+  .line_input {
+    width: 80vw;
+  }
+
+  button {
+    width: 80vw;
+  }
 }
 
 </style>

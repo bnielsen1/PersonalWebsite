@@ -96,6 +96,17 @@ export default {
   }
 }
 
+@media (max-width: 500px) {
+  .project_card {
+    width: 80vw;
+    font-size: 14px;
+  }
+
+  .title_text {
+    font-size: 30px;
+  }
+}
+
 .project_card:hover {
   box-shadow: 10px 10px 10px black;
 }

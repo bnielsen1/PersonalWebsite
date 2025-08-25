@@ -3,6 +3,7 @@ import ProjectCard from './ProjectCard.vue'
 import Diploma from './Diploma.vue'
 import ExperienceCard from './ExperienceCard.vue'
 import Contact from './Contact.vue'
+import config from './config.js'
 
 export default {
   components: {
@@ -22,10 +23,10 @@ export default {
   },
   methods: {
     async fetchData() {
-      const projectResponse = await fetch('http://localhost:3000/projects');
+      const projectResponse = await fetch(config.api_url + ':3000/projects');
       this.projects = await projectResponse.json();
     
-      const experienceResponse = await fetch('http://localhost:3000/experiences');
+      const experienceResponse = await fetch(config.api_url + ':3000/experiences');
       this.experiences = await experienceResponse.json();
     },
     scrollTo(section) {
@@ -473,6 +474,59 @@ a {
 @media (max-width: 1300px) {
   .fun_pics {
     display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .home_button {
+    font-size: 14px;
+  }
+
+  .shortcuts {
+    font-size: 10px;
+  }
+
+  .hey_text {
+    font-size: 30px;
+    margin-top: 30px;
+  }
+
+  .reading_text {
+    font-size: 16px;
+    max-width: 90vw;
+  }
+
+  .face_desc {
+    width: 95vw;
+    padding-bottom: 5px;
+  }
+
+  .face_text {
+    width: 90vw;
+    padding: 5vw;
+    margin: 0px;
+  }
+
+  .center_box {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  .learn_more {
+    width: 90vw;
+  }
+
+  .social_entry {
+    font-size: 15px;
+  }
+
+  .socials {
+    padding: 0px;
+  }
+
+  .subheading_text {
+    font-size: 30px;
   }
 }
 
