@@ -173,8 +173,8 @@ export default {
 		:duration="1000"
 	      >
 		<img src="/tab.jpg" style="position: absolute; top: 50px; right: 150px; height: 240px; border-radius: 40%; padding"/>
-		<img src="/volleyball.webp" style="position: absolute; top: 15px; left: 500px; height: 160px; border-radius: 50%"/>
-		<img src="/shine.png" style="position: absolute; top: 200px; left: 500px; height: 140px;" />	
+		<img src="/volleyball.webp" style="position: absolute; top: 15px; left: 480px; height: 160px; border-radius: 50%"/>
+		<img src="/shine.png" style="position: absolute; top: 200px; left: 480px; height: 140px;" />	
 	      </div>
 	    </div>
         </div>
@@ -436,7 +436,7 @@ a {
   width: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .experience_box {
     column-count: 1;
   }
@@ -452,11 +452,17 @@ a {
 
 @media (max-width: 1200px) {
   .reading_text {
-    width: 650px;
+    width: 90%;
   }
 
   .face_pic {
     display: none;
+  }
+
+  .face_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hey_text {
@@ -468,6 +474,13 @@ a {
   .project_box {
     max-width: calc((3 * 800px) + (2 * 120px));
   }
+
+  .learn_more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -476,7 +489,7 @@ a {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
   .home_button {
     font-size: 14px;
   }

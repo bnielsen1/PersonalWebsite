@@ -5,15 +5,21 @@
       return {
         name: "",
         email: "",
-        message: ""
+        message: "",
+        sent: false,
+        submitted: false,
+        loading: false,
+        info: ""
       }
     },
     methods: {
       async submit() {
         if ((this.name == "") || (this.email == "") || (this.message == "")) {
-          console.log("CANT SEND INCOMPLETE EMAIL")
+          this.info = "Please include all fields!"
         } else {
-          console.log("Form contents good, sending message to backend...")
+          this.info = "";
+          this.loading = true;
+          this.sent = true;
 
           const formData = {
             name: this.name,
@@ -22,17 +28,26 @@
           }
 
           // Attempt to send post request
-          const response = await fetch('api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
+          try {
+            const response = await fetch('api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
 
-          if (response.ok) {
-            console.log("message got fully sent!")
-          } else {
-            console.log("server failed somewhere")
-          }
+            if (response.ok) {
+              this.loading = false;
+              this.info = "Message sent! I'll get back to you shortly."
+            } else {
+              // server side error
+              this.loading = false;
+              this.info = "Server side error. Please try again later!"
+            }
+          } catch (error) {
+            // server side error
+            this.loading = false;
+            this.info = "An error occuered! Check your internet connection or refresh the page"
+          } 
         }
       }
     }
@@ -42,21 +57,48 @@
 
 <template>
   <div class="contact_box">
-    <div class="input_chunk">
-      Name
-      <input class="line_input" v-model="name" />
+    <div class="form_contents"
+      v-if="!sent"
+      v-motion
+      :initial="{ opacity: 1 }"
+      :enter="{ opacity: 1 }"
+      :leave="{ opacity: 0 }"
+    >
+        <div class="input_chunk">
+          Name
+          <input class="line_input" v-model="name" />
+        </div>
+        <div class="input_chunk">
+          Email
+          <input class="line_input" v-model="email" /> 
+        </div>
+        <div class="input_chunk">
+          Message
+          <textarea v-model="message" />
+        </div>
+        <button @click="submit">
+          Submit
+        </button>
     </div>
-    <div class="input_chunk">
-      Email
-      <input class="line_input" v-model="email" /> 
+    <div
+      v-if="loading"
+      v-motion
+      :initial="{ opacity: 0 }"
+      :enter="{ opacity: 1 }"
+      :leave="{ opacity: 0 }"
+    >
+      <img src="/loading.gif" style="width: 100px;"/>
     </div>
-    <div class="input_chunk">
-      Message
-      <textarea v-model="message" />
+    <div
+      v-if="info != ''"
+      v-motion
+      :initial="{ opacity: 0 }"
+      :enter="{ opacity: 1 }"
+      :leave="{ opacity: 0 }"
+      :duration="1000"
+    >
+      {{ info }}
     </div>
-    <button @click="submit">
-      Submit
-    </button>
   </div>
 </template>
 
@@ -142,7 +184,7 @@ button:hover {
   margin-bottom: 10px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 750px) {
   .contact_box {
     width: 90vw;
     padding: 5px;

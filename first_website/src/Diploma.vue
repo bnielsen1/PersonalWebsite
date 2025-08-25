@@ -57,7 +57,7 @@
   box-shadow: 10px 10px 10px black;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 980px) {
   .diploma_box {
     width: 80vw;
   }

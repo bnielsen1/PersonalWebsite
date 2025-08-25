@@ -36,7 +36,7 @@ export default {
             height: '340px',
             backgroundImage: 'linear-gradient(to bottom right, ' + this.colors[0] + ', ' + this.colors[1] + ')',
             padding: '20px',
-            margin: '20px'
+            margin: '5px'
           }
       }
     }
@@ -87,16 +87,10 @@ export default {
 .project_card {
   box-shadow: 8px 8px 3px #444444;
   transition: 0.4s ease;
-  width: 500px;
+  width: 400px;
 }
 
-@media (max-width: 1200px) and (min-width: 950px) {
-  .project_card {
-    width: 400px;
-  }
-}
-
-@media (max-width: 500px) {
+@media (max-width: 980px) {
   .project_card {
     width: 80vw;
     font-size: 14px;
@@ -125,8 +119,8 @@ export default {
 }
 
 .framework_img {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   margin-top: auto;
   margin-left: 5px;
   margin-right: 5px;

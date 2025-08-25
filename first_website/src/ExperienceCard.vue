@@ -78,7 +78,7 @@ export default {
   width: 400px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 980px) {
   .experience_card {
     width: 80vw;
     font-size: 14px;
