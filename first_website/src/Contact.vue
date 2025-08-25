@@ -1,4 +1,5 @@
 <script>
+
   export default {
     data() {
       return {
@@ -21,7 +22,7 @@
           }
 
           // Attempt to send post request
-          const response = await fetch('http://localhost:3000/contact', {
+          const response = await fetch('api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

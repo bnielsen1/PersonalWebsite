@@ -3,7 +3,6 @@ import ProjectCard from './ProjectCard.vue'
 import Diploma from './Diploma.vue'
 import ExperienceCard from './ExperienceCard.vue'
 import Contact from './Contact.vue'
-import config from './config.js'
 
 export default {
   components: {
@@ -23,10 +22,10 @@ export default {
   },
   methods: {
     async fetchData() {
-      const projectResponse = await fetch(config.api_url + ':3000/projects');
+      const projectResponse = await fetch('data/projects.json');
       this.projects = await projectResponse.json();
     
-      const experienceResponse = await fetch(config.api_url + ':3000/experiences');
+      const experienceResponse = await fetch('data/experiences.json');
       this.experiences = await experienceResponse.json();
     },
     scrollTo(section) {
