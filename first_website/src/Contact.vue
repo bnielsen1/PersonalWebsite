@@ -172,6 +172,12 @@ button:hover {
   background-color: white;
 }
 
+.form_contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .input_chunk {
   display: flex;
   flex-direction: column;
@@ -191,12 +197,12 @@ button:hover {
   }
 
   input {
-    width: 80vw;
+    width: auto;
     font-size: 16px;
   }
 
   textarea {
-    width: 80vw;
+    width: auto;
     font-size: 16px;
   }
 
@@ -205,7 +211,7 @@ button:hover {
   }
 
   .line_input {
-    width: 80vw;
+    width: auto;
   }
 
   button {
